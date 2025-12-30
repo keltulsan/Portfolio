@@ -1,0 +1,19 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "The backend of portfolio project",
+  "keywords": [
+    "Portfolio"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keltulsan/Portfolio.git"
+  },
+  "license": "ISC",
+  "author": "Keltulsan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
