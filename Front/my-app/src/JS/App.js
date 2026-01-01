@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import '../Css/App.css'
-import { MoreInfo } from './MoreInfo';
+import { ProjectMoreInfo } from './MoreInfo';
 import { Home } from './Home';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/more-info" element={<MoreInfo />} />
+        <Route path="/project/:id" element={<ProjectMoreInfo />} />
       </Routes>
 
       </header>
@@ -19,3 +19,5 @@ function App() {
 }
 
 export default App;
+
+// TODO faire le more info

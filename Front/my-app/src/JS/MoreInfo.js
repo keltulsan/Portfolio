@@ -1,6 +1,6 @@
 import {Background} from './Backgound'
 
-export function MoreInfo() {
+export function ProjectMoreInfo(id) {
     return (
         <div>
             <Background />

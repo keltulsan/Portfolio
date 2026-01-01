@@ -22,6 +22,10 @@
     text-align: left;
 }
 
+.cardImage {
+  border-radius: 40px 40px 0px 0px !important;
+}
+
 .cardLink {
     font-size: 1.5rem ;
     font-weight: bold;
@@ -31,4 +35,5 @@
   font-size: 2.2rem !important;
   font-weight: bold !important;
   margin-bottom: 2vh !important;
+  color: #000000;
 }
