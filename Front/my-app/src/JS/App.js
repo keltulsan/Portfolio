@@ -8,39 +8,41 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
+        <div className="background-wrapper">
+          
           <Background />
 
-        <h1 className='title'>Portfolio</h1>
-        <div className='cardDisplay'>
-          <ProjectCard 
-          projectName="hello" 
-          imageSrc={logo}
-          content="hello 2"
-          moreInfoLink=""
-          githubLink=""
-          />
-           <ProjectCard 
-          projectName="hello" 
-          imageSrc={logo}
-          content="hello 2"
-          moreInfoLink=""
-          githubLink=""
-          /> <ProjectCard 
-          projectName="hello" 
-          imageSrc={logo}
-          content="hello 2"
-          moreInfoLink=""
-          githubLink=""
-          />
-          <ProjectCard 
-          projectName="hello" 
-          imageSrc={logo}
-          content="hello 2"
-          moreInfoLink=""
-          githubLink=""
-          />
-          
+          <h1 className='title'>Portfolio</h1>
+          <div className='cardDisplay'>
+            <ProjectCard 
+            projectName="hello" 
+            imageSrc={logo}
+            content="hello 2"
+            moreInfoLink=""
+            githubLink=""
+            />
+            <ProjectCard 
+            projectName="hello" 
+            imageSrc={logo}
+            content="hello 2"
+            moreInfoLink=""
+            githubLink=""
+            /> <ProjectCard 
+            projectName="hello" 
+            imageSrc={logo}
+            content="hello 2"
+            moreInfoLink=""
+            githubLink=""
+            />
+            <ProjectCard 
+            projectName="hello" 
+            imageSrc={logo}
+            content="hello 2"
+            moreInfoLink=""
+            githubLink=""
+            />
+          </div>
+
         </div>
       </header>
     </div>

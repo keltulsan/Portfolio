@@ -25,7 +25,11 @@ export function Background() {
 function InitBackground(particlesContainer) {
   if (!particlesContainer) return;
 
-  const particleCount = 80;
+    const containerWidth = particlesContainer.offsetWidth;
+    const containerHeight = particlesContainer.offsetHeight;
+
+    const density = 0.0001; 
+    const particleCount = Math.floor(containerWidth * containerHeight * density);
 
   // Create particles
   for (let i = 0; i < particleCount; i++) {
@@ -105,8 +109,9 @@ function animateParticle(particle) {
 function onMouseMove(e, particlesContainer) {
   if (!particlesContainer) return;
 
-  const mouseX = (e.clientX / window.innerWidth) * 100;
-  const mouseY = (e.clientY / window.innerHeight) * 100;
+    const rect = particlesContainer.getBoundingClientRect();
+    const mouseX = ((e.clientX - rect.left) / rect.width) * 100;
+    const mouseY = ((e.clientY - rect.top) / rect.height) * 100;
 
   const particle = document.createElement('div');
   particle.className = 'particle';
