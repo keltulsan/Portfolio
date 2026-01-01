@@ -9,7 +9,7 @@
     color: white;
     border: none !important;
     border-radius: 40px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 999;    
 }
 
 .card > .cardBody {

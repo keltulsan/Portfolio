@@ -1,13 +1,47 @@
-// Create particle effect
-const particlesContainer = document.getElementById('particles-container');
-const particleCount = 80;
+import { useEffect, useRef } from "react";
 
-// Create particles
-for (let i = 0; i < particleCount; i++) {
-    createParticle();
+export function Background() {
+    const particlesRef = useRef(null);
+
+    useEffect(() => {
+        const cleanup = InitBackground(particlesRef.current);
+        return cleanup;
+    }, []);
+
+    return (
+        <div className="gradient-background">
+            <div className="gradient-sphere sphere-1"></div>
+            <div className="gradient-sphere sphere-2"></div>
+            <div className="gradient-sphere sphere-3"></div>
+            <div className="glow"></div>
+            <div className="grid-overlay"></div>
+            <div className="noise-overlay"></div>
+            <div className="particles-container" ref={particlesRef}></div>
+        </div>
+    )
 }
 
-function createParticle() {
+// Create particle effect
+function InitBackground(particlesContainer) {
+  if (!particlesContainer) return;
+
+  const particleCount = 80;
+
+  // Create particles
+  for (let i = 0; i < particleCount; i++) {
+    createParticle(particlesContainer);
+  }
+
+   const handleMouseMove = (e) => onMouseMove(e, particlesContainer);
+  document.addEventListener('mousemove', handleMouseMove);
+
+  return () => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    particlesContainer.innerHTML = '';
+  };
+};
+
+function createParticle(particlesContainer) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
@@ -68,47 +102,40 @@ function animateParticle(particle) {
 }
 
 // Mouse interaction
-document.addEventListener('mousemove', (e) => {
-    // Create particles at mouse position
-    const mouseX = (e.clientX / window.innerWidth) * 100;
-    const mouseY = (e.clientY / window.innerHeight) * 100;
-    
-    // Create temporary particle
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Small size
-    const size = Math.random() * 4 + 2;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    
-    // Position at mouse
-    particle.style.left = `${mouseX}%`;
-    particle.style.top = `${mouseY}%`;
-    particle.style.opacity = '0.6';
-    
-    particlesContainer.appendChild(particle);
-    
-    // Animate outward
-    setTimeout(() => {
-        particle.style.transition = 'all 2s ease-out';
-        particle.style.left = `${mouseX + (Math.random() * 10 - 5)}%`;
-        particle.style.top = `${mouseY + (Math.random() * 10 - 5)}%`;
-        particle.style.opacity = '0';
-        
-        // Remove after animation
-        setTimeout(() => {
-            particle.remove();
-        }, 2000);
-    }, 10);
-    
-    // Subtle movement of gradient spheres
-    const spheres = document.querySelectorAll('.gradient-sphere');
-    const moveX = (e.clientX / window.innerWidth - 0.5) * 5;
-    const moveY = (e.clientY / window.innerHeight - 0.5) * 5;
-    
-    spheres.forEach(sphere => {
-        const currentTransform = getComputedStyle(sphere).transform;
-        sphere.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
-});
+function onMouseMove(e, particlesContainer) {
+  if (!particlesContainer) return;
+
+  const mouseX = (e.clientX / window.innerWidth) * 100;
+  const mouseY = (e.clientY / window.innerHeight) * 100;
+
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+
+  const size = Math.random() * 4 + 2;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+
+  particle.style.left = `${mouseX}%`;
+  particle.style.top = `${mouseY}%`;
+  particle.style.opacity = '0.6';
+
+  particlesContainer.appendChild(particle);
+
+  setTimeout(() => {
+    particle.style.transition = 'all 2s ease-out';
+    particle.style.left = `${mouseX + (Math.random() * 10 - 5)}%`;
+    particle.style.top = `${mouseY + (Math.random() * 10 - 5)}%`;
+    particle.style.opacity = '0';
+
+    setTimeout(() => particle.remove(), 2000);
+  }, 10);
+
+  // Mouvement des sphères (optionnel)
+  const spheres = document.querySelectorAll('.gradient-sphere');
+  const moveX = (e.clientX / window.innerWidth - 0.5) * 5;
+  const moveY = (e.clientY / window.innerHeight - 0.5) * 5;
+
+  spheres.forEach(sphere => {
+    sphere.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+}

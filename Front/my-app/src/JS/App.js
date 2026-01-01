@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import '../Css/App.css';
 import '../Css/Background.css'
-import './backgound'
+import { Background } from './Backgound';
 import { ProjectCard } from './Cards';
 
 function App() {
@@ -9,15 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-          <div class="gradient-background">
-            <div class="gradient-sphere sphere-1"></div>
-            <div class="gradient-sphere sphere-2"></div>
-            <div class="gradient-sphere sphere-3"></div>
-            <div class="glow"></div>
-            <div class="grid-overlay"></div>
-            <div class="noise-overlay"></div>
-            <div class="particles-container" id="particles-container"></div>
-          </div>
+          <Background />
 
         <h1 className='title'>Portfolio</h1>
         <div className='cardDisplay'>
