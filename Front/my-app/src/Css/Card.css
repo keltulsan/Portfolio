@@ -1,0 +1,27 @@
+.cardStyle {
+    background: linear-gradient(
+    135deg,
+    #FF7FA8 0%,
+    #C35A7A 35%,
+    #3A2F33 70%,
+    #000000 100%
+    );
+    color: white;
+    border: none !important;
+    border-radius: 40px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card > .cardBody {
+  border-top: 2px solid white;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.cardBody {
+    text-align: left;
+}
+
+.cardLink {
+    font-size: 1.25rem ;
+}
