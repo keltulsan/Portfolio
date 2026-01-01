@@ -1,0 +1,40 @@
+.container {
+    position: relative;
+    z-index: 999 !important;
+}
+
+h1 {
+    font-size: 7rem !important;
+    font-weight: 800;
+    margin: 5rem !important;
+    background: linear-gradient(to right, #fff, #acacac);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+
+.description-container{
+    margin: 5rem 1rem 5rem 1rem;
+}
+
+.description {
+    text-align: justify;
+}
+
+.home-button {
+    background: linear-gradient(to right, #C35A7A, #3A2F33);
+    border-radius: 20px;
+    border: 0px;
+    font-size: 3rem;
+}
+
+@media (max-width: 600px) { 
+    h1{
+        font-size: 3rem !important;
+        margin: 3rem !important;
+    }
+    .home-button {
+        font-size: 1.5rem; 
+    }
+}
