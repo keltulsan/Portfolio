@@ -23,5 +23,12 @@
 }
 
 .cardLink {
-    font-size: 1.25rem ;
+    font-size: 1.5rem ;
+    font-weight: bold;
+}
+
+.projectTitle {
+  font-size: 2.2rem !important;
+  font-weight: bold !important;
+  margin-bottom: 2vh !important;
 }

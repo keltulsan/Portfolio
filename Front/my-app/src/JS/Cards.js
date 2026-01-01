@@ -6,7 +6,7 @@ export function ProjectCard({projectName, imageSrc, content, moreInfoLink, githu
     <Card className='cardStyle' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={imageSrc} />
       <Card.Body className='cardBody'>
-        <Card.Title>{projectName}</Card.Title>
+        <Card.Title className='projectTitle'>{projectName}</Card.Title>
         <Card.Text>
           {content}
         </Card.Text>
