@@ -1,6 +1,6 @@
 [
     {
-        "id" : 1,
+        "id" : "1",
         "image" : "background.jpg",
         "name" : "Bonjour",
         "shortDesiption" : "hello",
@@ -8,7 +8,7 @@
         "githubLink" : "/"
     },
     {
-        "id" : 2,
+        "id" : "2",
         "image" : "background.jpg",
         "name" : "hello",
         "shortDesiption" : "hello",
@@ -16,7 +16,7 @@
         "githubLink" : "/"
     },
     {
-        "id" : 3,
+        "id" : "3",
         "image" : "background.jpg",
         "name" : "hello",
         "shortDesiption" : "hello",

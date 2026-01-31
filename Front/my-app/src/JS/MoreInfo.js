@@ -12,7 +12,7 @@ export function ProjectMoreInfo() {
     var projectDescription = "";
     
     for (const project of projects) {
-        if(project.id == id) {
+        if(project.id === id) {
             projectName = project.name;
             projectDescription = project.description;
             break;
