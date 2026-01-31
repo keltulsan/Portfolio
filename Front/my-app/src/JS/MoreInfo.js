@@ -1,4 +1,4 @@
-import {Background} from './Backgound'
+import {Background} from './Background'
 import { useParams } from 'react-router-dom';
 import projects from '../JSON/projects.json'
 import { useNavigate } from 'react-router-dom';

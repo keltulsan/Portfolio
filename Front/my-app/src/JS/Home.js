@@ -1,6 +1,6 @@
 import '../Css/Home.css';
 import '../Css/Background.css'
-import { Background } from './Backgound';
+import { Background } from './Background';
 import { ProjectCard } from './Cards';
 import projects from '../JSON/projects.json'
 import description from '../JSON/description.json'
