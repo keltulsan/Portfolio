@@ -3,6 +3,7 @@ import '../Css/Background.css'
 import { Background } from './Backgound';
 import { ProjectCard } from './Cards';
 import projects from '../JSON/projects.json'
+import description from '../JSON/description.json'
 
 export function Home() {
     return (  
@@ -11,6 +12,11 @@ export function Home() {
         <Background />
 
         <h1 className='title'>Portfolio</h1>
+
+        <div className='description-container'>
+        <p className='description'>{description.description}</p>
+        </div>
+
         <div className='cardDisplay'>
 
         {projects.map(project => (
