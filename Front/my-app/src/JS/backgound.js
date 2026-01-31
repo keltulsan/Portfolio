@@ -3,10 +3,15 @@ import { useEffect, useRef } from "react";
 export function Background() {
     const particlesRef = useRef(null);
 
-    useEffect(() => {
-      const cleanup = InitBackground(particlesRef.current);
-      return cleanup || (() => {});
-    }, []);
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
+    const cleanup = InitBackground(particlesRef.current);
+    return cleanup;
+  }, []); 
 
     return (
         <div className="gradient-background">
@@ -42,8 +47,13 @@ function InitBackground(particlesContainer) {
 
   return () => {
     document.removeEventListener('mousemove', handleMouseMove);
-    particlesContainer.innerHTML = '';
+    particlesContainer.querySelectorAll('.particle').forEach(p => {
+    clearTimeout(p._startTimeout);
+    clearTimeout(p._loopTimeout);
+  });
+  particlesContainer.innerHTML = '';
   };
+  
 };
 
 function createParticle(particlesContainer) {
@@ -80,30 +90,32 @@ function resetParticle(particle) {
 }
 
 function animateParticle(particle) {
-    // Initial position
-    const pos = resetParticle(particle);
-    
-    // Random animation properties
-    const duration = Math.random() * 10 + 10;
-    const delay = Math.random() * 5;
-    
-    // Animate with GSAP-like timing
-    setTimeout(() => {
-        particle.style.transition = `all ${duration}s linear`;
-        particle.style.opacity = Math.random() * 0.3 + 0.1;
-        
-        // Move in a slight direction
-        const moveX = pos.x + (Math.random() * 20 - 10);
-        const moveY = pos.y - Math.random() * 30; // Move upwards
-        
-        particle.style.left = `${moveX}%`;
-        particle.style.top = `${moveY}%`;
-        
-        // Reset after animation completes
-        setTimeout(() => {
-            animateParticle(particle);
-        }, duration * 1000);
-    }, delay * 1000);
+  if (!particle.isConnected) return;
+
+  const pos = resetParticle(particle);
+  const duration = Math.random() * 10 + 10;
+  const delay = Math.random() * 5;
+
+  const startTimeout = setTimeout(() => {
+    if (!particle.isConnected) return;
+
+    particle.style.transition = `all ${duration}s linear`;
+    particle.style.opacity = Math.random() * 0.3 + 0.1;
+
+    const moveX = pos.x + (Math.random() * 20 - 10);
+    const moveY = pos.y - Math.random() * 30;
+
+    particle.style.left = `${moveX}%`;
+    particle.style.top = `${moveY}%`;
+
+    const loopTimeout = setTimeout(() => {
+      animateParticle(particle);
+    }, duration * 1000);
+
+    particle._loopTimeout = loopTimeout;
+  }, delay * 1000);
+
+  particle._startTimeout = startTimeout;
 }
 
 // Mouse interaction
