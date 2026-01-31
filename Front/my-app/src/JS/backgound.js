@@ -4,8 +4,8 @@ export function Background() {
     const particlesRef = useRef(null);
 
     useEffect(() => {
-        const cleanup = InitBackground(particlesRef.current);
-        return cleanup;
+      const cleanup = InitBackground(particlesRef.current);
+      return cleanup || (() => {});
     }, []);
 
     return (
@@ -23,6 +23,7 @@ export function Background() {
 
 // Create particle effect
 function InitBackground(particlesContainer) {
+  if (typeof window === "undefined") return;
   if (!particlesContainer) return;
 
     const containerWidth = particlesContainer.offsetWidth;
@@ -107,6 +108,7 @@ function animateParticle(particle) {
 
 // Mouse interaction
 function onMouseMove(e, particlesContainer) {
+  if (typeof document === "undefined") return;
   if (!particlesContainer) return;
 
     const rect = particlesContainer.getBoundingClientRect();
@@ -136,7 +138,7 @@ function onMouseMove(e, particlesContainer) {
   }, 10);
 
   // Mouvement des sphères (optionnel)
-  const spheres = document.querySelectorAll('.gradient-sphere');
+  const spheres = typeof document !== "undefined" ? document.querySelectorAll('.gradient-sphere') : [];
   const moveX = (e.clientX / window.innerWidth - 0.5) * 5;
   const moveY = (e.clientY / window.innerHeight - 0.5) * 5;
 
