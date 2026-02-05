@@ -19,5 +19,3 @@ function App() {
 }
 
 export default App;
-
-// TODO faire le more info
